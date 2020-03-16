@@ -7,7 +7,7 @@ public class Aviao : MonoBehaviour
     [SerializeField]
     public float Force = 1;
 
-    Rigidbody2D Rigidbody;
+    private Rigidbody2D Rigidbody;
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
