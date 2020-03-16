@@ -9,7 +9,7 @@ public class ObjectDestroyer : MonoBehaviour
     {
         if (collision.gameObject.GetComponentInParent<Obstaculo>())
         {
-            Destroy(collision.gameObject.transform.parent);
+            Destroy(collision.gameObject.transform.parent.gameObject);
         }
     }
 }

@@ -40,4 +40,12 @@ public class Generator : MonoBehaviour
     {
         GameObject.Instantiate(Obstaculo, transform.position, transform.rotation);
     }
+    public void Restart()
+    {
+        foreach (var item in FindObjectsOfType<Obstaculo>())
+        {
+            Destroy(item.gameObject);
+        }
+        Clock = Interval;
+    }
 }
