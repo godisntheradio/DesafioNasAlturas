@@ -10,6 +10,8 @@ public class Manager : MonoBehaviour
     private Aviao Plane;
     [SerializeField]
     private Generator Generator;
+    [SerializeField]
+    private Pontuacao Pontuacao;
 
     public void EndGame()
     {
@@ -22,5 +24,6 @@ public class Manager : MonoBehaviour
         GameOverScreen.SetActive(false);
         Plane.Restart();
         Generator.Restart();
+        Pontuacao.Restart();
     }
 }

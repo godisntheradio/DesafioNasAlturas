@@ -10,6 +10,7 @@ public class Aviao : MonoBehaviour
     private Rigidbody2D Rigidbody;
     private Manager GameManager;
     private Vector3 InitialPosition;
+    
     void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -17,7 +18,6 @@ public class Aviao : MonoBehaviour
         InitialPosition = transform.position;
     }
 
-    
     void Update()
     {
         if (Input.GetButtonDown("Impulse"))

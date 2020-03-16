@@ -179,7 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  LifeSpan: 5
   MaxHeight: 2
   MinHeight: -0.8
 --- !u!1 &5585738597607614540
