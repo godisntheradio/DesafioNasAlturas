@@ -24,6 +24,7 @@ public class Aviao : MonoBehaviour
 
     public void ApplyMovement()
     {
+        Rigidbody.velocity = Vector2.zero;
         Rigidbody.AddForce(Vector2.up * Force, ForceMode2D.Impulse);
     }
 }
