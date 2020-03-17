@@ -8,6 +8,7 @@ public class Aviao : MonoBehaviour
     public float Force = 1;
 
     private Rigidbody2D Rigidbody;
+    private Animator Animator;
     private Manager GameManager;
     private Vector3 InitialPosition;
 
@@ -16,6 +17,7 @@ public class Aviao : MonoBehaviour
     void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
         GameManager = GameObject.FindObjectOfType<Manager>();
         InitialPosition = transform.position;
     }
@@ -24,7 +26,7 @@ public class Aviao : MonoBehaviour
     {
         if (Input.GetButtonDown("Impulse"))
             ShouldApplyForce = true;
-        
+        Animator.SetFloat("VelocidadeY", Rigidbody.velocity.y);
         
     }
 

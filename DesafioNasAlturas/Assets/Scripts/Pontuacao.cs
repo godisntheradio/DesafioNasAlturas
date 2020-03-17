@@ -9,7 +9,8 @@ public class Pontuacao : MonoBehaviour
 
     [SerializeField]
     private Text ScreenScore;
-    private int Score = 0;
+    public int Score { get; private set; }
+
     AudioSource Audio;
 
     #endregion
