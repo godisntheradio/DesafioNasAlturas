@@ -6,13 +6,7 @@ public class Carrossel : MonoBehaviour
 {
     #region Serialized Fields
     [SerializeField]
-    private float _Speed;
-
-    #endregion
-
-    #region Properties
-
-    public float Speed { get => _Speed; set => _Speed = value; }
+    private VariavelCompartilhadaFloat Speed;
 
     #endregion
 
@@ -33,7 +27,7 @@ public class Carrossel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Time.deltaTime * Speed * Vector3.left);
+        transform.Translate(Time.deltaTime * Speed.Valor * Vector3.left);
         if ((transform.position - InitialPosition).magnitude >= FloorSize)
         {
             transform.position = InitialPosition;

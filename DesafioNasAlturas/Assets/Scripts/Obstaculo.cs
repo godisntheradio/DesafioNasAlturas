@@ -7,7 +7,7 @@ public class Obstaculo : MonoBehaviour
     #region Serialized Fields
 
     [SerializeField]
-    public float Speed = 1;
+    public VariavelCompartilhadaFloat Speed;
     [SerializeField]
     private float MaxHeight = 1.8f;
     [SerializeField]
@@ -33,6 +33,6 @@ public class Obstaculo : MonoBehaviour
             Pontuacao.Increment();
             HasBeenPassed = true;
         }
-        transform.Translate(-Vector3.right * Speed * Time.deltaTime);
+        transform.Translate(-Vector3.right * Speed.Valor * Time.deltaTime);
     }
 }

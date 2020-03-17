@@ -12,6 +12,8 @@ public class Manager : MonoBehaviour
     private Generator Generator;
     [SerializeField]
     private Pontuacao Pontuacao;
+    [SerializeField]
+    private ControleDeDificuldade ControleDeDificuldade;
 
     public void EndGame()
     {
@@ -26,6 +28,7 @@ public class Manager : MonoBehaviour
         Plane.Restart();
         Generator.Restart();
         Pontuacao.Restart();
+        ControleDeDificuldade.Restart();
     }
 
 }

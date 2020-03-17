@@ -11,7 +11,12 @@ public class Generator : MonoBehaviour
     private GameObject Obstaculo;
 
     [SerializeField]
-    private float Interval = 1.0f;
+    private ControleDeDificuldade Controle;
+
+    [SerializeField]
+    private float MaxInterval = 1.0f;
+    [SerializeField]
+    private float MinInterval = 1.0f;
 
     #endregion
 
@@ -23,7 +28,7 @@ public class Generator : MonoBehaviour
 
     void Start()
     {
-        Clock = Interval;
+        Clock = MinInterval;
     }
     
     void Update()
@@ -32,7 +37,7 @@ public class Generator : MonoBehaviour
         if (Clock <= 0)
         {
             Spawn();
-            Clock = Interval;
+            Clock = Mathf.Lerp(MinInterval, MaxInterval, Controle.Dificuldade);
         }
     }
 
@@ -46,6 +51,6 @@ public class Generator : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        Clock = Interval;
+        Clock = MaxInterval;
     }
 }
