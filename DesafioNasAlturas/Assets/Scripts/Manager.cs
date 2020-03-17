@@ -5,7 +5,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject GameOverScreen;
+    private GameOverScreen GameOverScreen;
     [SerializeField]
     private Aviao Plane;
     [SerializeField]
@@ -16,14 +16,16 @@ public class Manager : MonoBehaviour
     public void EndGame()
     {
         Time.timeScale = 0;
-        GameOverScreen.SetActive(true);
+        Pontuacao.SaveScore();
+        GameOverScreen.ShowGameOver();
     }
     public void Restart()
     {
         Time.timeScale = 1;
-        GameOverScreen.SetActive(false);
+        GameOverScreen.Restart();
         Plane.Restart();
         Generator.Restart();
         Pontuacao.Restart();
     }
+
 }
