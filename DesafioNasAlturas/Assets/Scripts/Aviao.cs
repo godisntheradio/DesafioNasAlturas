@@ -10,6 +10,8 @@ public class Aviao : MonoBehaviour
     private Rigidbody2D Rigidbody;
     private Manager GameManager;
     private Vector3 InitialPosition;
+
+    private bool ShouldApplyForce = false;
     
     void Awake()
     {
@@ -18,18 +20,25 @@ public class Aviao : MonoBehaviour
         InitialPosition = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Impulse"))
-        {
+            ShouldApplyForce = true;
+        
+        
+    }
+
+    void FixedUpdate()
+    {
+        if (ShouldApplyForce)
             ApplyMovement();
-        }
     }
 
     public void ApplyMovement()
     {
         Rigidbody.velocity = Vector2.zero;
         Rigidbody.AddForce(Vector2.up * Force, ForceMode2D.Impulse);
+        ShouldApplyForce = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
