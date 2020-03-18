@@ -12,7 +12,8 @@ public class Aviao : MonoBehaviour
 
     [SerializeField]
     private UnityEvent OnColliderHit;
-
+    [SerializeField]
+    private UnityEvent OnObstaculoPass;
 
     #endregion
 
@@ -54,15 +55,23 @@ public class Aviao : MonoBehaviour
         Rigidbody.AddForce(Vector2.up * Force, ForceMode2D.Impulse);
         ShouldApplyForce = false;
     }
+    public void Restart()
+    {
+        Rigidbody.simulated = true;
+        transform.position = InitialPosition;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rigidbody.simulated = false;
         OnColliderHit.Invoke();
     }
-    public void Restart()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigidbody.simulated = true;
-        transform.position = InitialPosition;
+        if (collision.GetComponent<Obstaculo>())
+        {
+            OnObstaculoPass.Invoke();
+        }
     }
 }

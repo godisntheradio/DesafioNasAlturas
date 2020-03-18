@@ -8,6 +8,8 @@ public class AIController : MonoBehaviour
     [Header("Input Config")]
     [SerializeField]
     private UnityEvent OnImpulseRequest;
+    [SerializeField]
+    private float Interval;
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class AIController : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(Interval);
             OnImpulseRequest.Invoke();
 
         }
