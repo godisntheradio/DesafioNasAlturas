@@ -1,35 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Aviao : MonoBehaviour
 {
+    #region Serialized properties
+
     [SerializeField]
     public float Force = 1;
 
+    [SerializeField]
+    private UnityEvent OnColliderHit;
+
+
+    #endregion
+
+    #region Fields
+
     private Rigidbody2D Rigidbody;
     private Animator Animator;
-    private Manager GameManager;
     private Vector3 InitialPosition;
 
     private bool ShouldApplyForce = false;
-    
+
+    #endregion
     void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
-        GameManager = GameObject.FindObjectOfType<Manager>();
         InitialPosition = transform.position;
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Impulse"))
-            ShouldApplyForce = true;
+        
         Animator.SetFloat("VelocidadeY", Rigidbody.velocity.y);
         
     }
-
+    public void SetApplyForce()
+    {
+        ShouldApplyForce = true;
+    }
     void FixedUpdate()
     {
         if (ShouldApplyForce)
@@ -46,7 +58,7 @@ public class Aviao : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rigidbody.simulated = false;
-        GameManager.EndGame();
+        OnColliderHit.Invoke();
     }
     public void Restart()
     {

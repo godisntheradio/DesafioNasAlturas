@@ -6272,6 +6272,7 @@ GameObject:
   - component: {fileID: 1056672340}
   - component: {fileID: 1056672339}
   - component: {fileID: 1056672338}
+  - component: {fileID: 1056672342}
   - component: {fileID: 1056672337}
   m_Layer: 0
   m_Name: Aviao
@@ -6327,6 +6328,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Force: 5
+  OnColliderHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2112661416}
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!58 &1056672339
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6413,6 +6428,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1056672342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056672335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615618ff431afc24aac7c9ad387da551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnImpulseRequest:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1056672338}
+        m_MethodName: SetApplyForce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1113840180
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,6 +6468,7 @@ GameObject:
   - component: {fileID: 1113840184}
   - component: {fileID: 1113840185}
   - component: {fileID: 1113840186}
+  - component: {fileID: 1113840187}
   m_Layer: 0
   m_Name: Aviao
   m_TagString: Untagged
@@ -6548,6 +6590,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Force: 5
+  OnColliderHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2112661416}
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1113840186
 Animator:
   serializedVersion: 3
@@ -6567,6 +6623,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1113840187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113840180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b6d5d7cc7c994a947fe68b0fad92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAxisPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1113840185}
+        m_MethodName: SetApplyForce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Axis: Player1
 --- !u!1 &1302723514
 GameObject:
   m_ObjectHideFlags: 0
@@ -11742,7 +11825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861421802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.89, z: -1.09375}
+  m_LocalPosition: {x: 0, y: -15.36, z: -1.09375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1056672336}

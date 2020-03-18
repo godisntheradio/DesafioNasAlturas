@@ -29,7 +29,6 @@ public class Obstaculo : MonoBehaviour
     {
         if (!HasBeenPassed && transform.position.x < PlaneX)
         {
-            Debug.Log("pontuou");
             Pontuacao.Increment();
             HasBeenPassed = true;
         }
