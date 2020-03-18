@@ -13,7 +13,7 @@ public class Carrossel : MonoBehaviour
     #region Fields
 
     public Vector3 InitialPosition;
-    public float FloorSize;
+    public float ImageSize;
 
     #endregion
 
@@ -21,16 +21,14 @@ public class Carrossel : MonoBehaviour
     void Awake()
     {
         InitialPosition = transform.position;
-        FloorSize = GetComponent<SpriteRenderer>().size.x * transform.localScale.x;
+        ImageSize = (GetComponent<SpriteRenderer>().size.x * transform.localScale.x) / 2 ;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float deslocamento = Mathf.Repeat(Speed.Valor * Time.time, ImageSize);
         transform.Translate(Time.deltaTime * Speed.Valor * Vector3.left);
-        if ((transform.position - InitialPosition).magnitude >= FloorSize)
-        {
-            transform.position = InitialPosition;
-        }
+        transform.position = InitialPosition + Vector3.left * deslocamento;
     }
 }
