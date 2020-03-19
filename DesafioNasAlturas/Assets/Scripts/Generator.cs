@@ -20,9 +20,10 @@ public class Generator : MonoBehaviour
 
     #endregion
 
-    #region Properties
+    #region Field
 
-    private float Clock = 0.0f;
+    public float Clock = 0.0f;
+    private bool Halt = false;
 
     #endregion
 
@@ -33,6 +34,8 @@ public class Generator : MonoBehaviour
     
     void Update()
     {
+        if (Halt)
+            return;
         Clock -= Time.deltaTime;
         if (Clock <= 0)
         {
@@ -43,7 +46,7 @@ public class Generator : MonoBehaviour
 
     void Spawn()
     {
-        GameObject.Instantiate(Obstaculo, transform.position, transform.rotation);
+        GameObject.Instantiate(Obstaculo, transform.position, transform.rotation, transform);
     }
     public void Restart()
     {
@@ -52,5 +55,15 @@ public class Generator : MonoBehaviour
             Destroy(item.gameObject);
         }
         Clock = MaxInterval;
+        Halt = false;
+    }
+
+    public void Stop()
+    {
+        Halt = true;
+    }
+    public void Resume()
+    {
+        Halt = false;
     }
 }

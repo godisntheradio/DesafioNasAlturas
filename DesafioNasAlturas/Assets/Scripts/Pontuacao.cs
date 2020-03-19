@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class Pontuacao : MonoBehaviour
 {
     #region Serialized Fields
@@ -10,19 +10,27 @@ public class Pontuacao : MonoBehaviour
     [SerializeField]
     private Text ScreenScore;
     public int Score { get; private set; }
-
-    AudioSource Audio;
+    [SerializeField]
+    private UnityEvent OnScore;
+    [SerializeField]
+    private bool IsMultiplayer = false;
 
     #endregion
 
     public int TopScore { get; private set; }
 
+    AudioSource Audio;
+
     const string ScoreKey = "TopScore";
+    const string ScoreKeyMP = "TopScoreMP";
 
     private void Awake()
     {
         Audio = GetComponent<AudioSource>();
-        TopScore = PlayerPrefs.GetInt(ScoreKey);
+        if (IsMultiplayer)
+            TopScore = PlayerPrefs.GetInt(ScoreKeyMP);
+        else
+            TopScore = PlayerPrefs.GetInt(ScoreKey);
     }
 
     public void Increment()
@@ -40,7 +48,10 @@ public class Pontuacao : MonoBehaviour
     {
         if (Score > TopScore)
         {
-            PlayerPrefs.SetInt(ScoreKey, Score);
+            if (IsMultiplayer)
+                PlayerPrefs.SetInt(ScoreKeyMP, Score);
+            else
+                PlayerPrefs.SetInt(ScoreKey, Score);
             TopScore = Score;
         }
     }

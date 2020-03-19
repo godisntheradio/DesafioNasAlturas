@@ -7,10 +7,6 @@ public class Manager : MonoBehaviour
     [SerializeField]
     private GameOverScreen GameOverScreen;
     [SerializeField]
-    private Aviao Plane;
-    [SerializeField]
-    private Generator Generator;
-    [SerializeField]
     private Pontuacao Pontuacao;
     [SerializeField]
     private ControleDeDificuldade ControleDeDificuldade;
@@ -21,12 +17,18 @@ public class Manager : MonoBehaviour
         Pontuacao.SaveScore();
         GameOverScreen.ShowGameOver();
     }
-    public void Restart()
+    public virtual void Restart()
     {
         Time.timeScale = 1;
         GameOverScreen.Restart();
-        Plane.Restart();
-        Generator.Restart();
+        foreach (Player item in FindObjectsOfType<Player>())
+        {
+            item.Restart();
+        }
+        foreach (Generator item in FindObjectsOfType<Generator>())
+        {
+            item.Restart();
+        }
         Pontuacao.Restart();
         ControleDeDificuldade.Restart();
     }

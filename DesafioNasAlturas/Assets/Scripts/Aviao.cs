@@ -21,6 +21,7 @@ public class Aviao : MonoBehaviour
 
     private Rigidbody2D Rigidbody;
     private Animator Animator;
+    private ParticleSystem Particles;
     private Vector3 InitialPosition;
 
     private bool ShouldApplyForce = false;
@@ -30,6 +31,7 @@ public class Aviao : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        Particles = GetComponentInChildren<ParticleSystem>();
         InitialPosition = transform.position;
     }
 
@@ -58,7 +60,7 @@ public class Aviao : MonoBehaviour
     public void Restart()
     {
         Rigidbody.simulated = true;
-        transform.position = InitialPosition;
+        Rigidbody.MovePosition(InitialPosition);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
