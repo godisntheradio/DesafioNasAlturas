@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 24101457}
   - component: {fileID: 24101456}
   m_Layer: 0
-  m_Name: PlayerCanvas (1)
+  m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 527643521}
+  m_Camera: {fileID: 617920804}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3339,7 +3339,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A
+  m_Text: L
 --- !u!222 &1954240307
 CanvasRenderer:
   m_ObjectHideFlags: 0
