@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MultiplayerManager : Manager
 {
+    #region Serialized Field
+
+    [SerializeField]
+    private ReviveScoreScreen ReviveScoreScreen;
+
+    #endregion
 
     public int PointsToRevive = 0;
     public int PointsRequiredToRevive = 2;
@@ -13,6 +19,7 @@ public class MultiplayerManager : Manager
         if(HasDeadPlayer)
         {
             PointsToRevive++;
+            ReviveScoreScreen.UpdateText(PointsRequiredToRevive - PointsToRevive);
             if (PointsToRevive >= PointsRequiredToRevive)
             {
                 Revive();
@@ -20,14 +27,19 @@ public class MultiplayerManager : Manager
             }
         }
     }
-    public void PlayerHasDied()
+    public void PlayerHasDied(Camera playerCamera)
     {
         if (HasDeadPlayer)
         {
             EndGame();
+            ReviveScoreScreen.Hide();
         }
-        HasDeadPlayer = true;
-        PointsToRevive = 0;
+        else
+        {
+            HasDeadPlayer = true;
+            PointsToRevive = 0;
+            ReviveScoreScreen.Show(playerCamera, PointsRequiredToRevive);
+        }
     }
     private void Revive()
     {
@@ -35,11 +47,13 @@ public class MultiplayerManager : Manager
         {
             item.Activate();
         }
+        ReviveScoreScreen.Hide();
     }
     public override void Restart()
     {
         base.Restart();
         HasDeadPlayer = false;
         PointsToRevive = 0;
+        ReviveScoreScreen.Hide();
     }
 }
